@@ -1,6 +1,6 @@
 <h1 align="center">Hi there, I'm Abubakar Shahid 👋</h1>
 
-<h3 align="center">Software Developer | MERN Stack | Python & C++ | DevOps Enthusiast</h3>
+<h3 align="center">Software Developer | MERN Stack | Python & C++ | DevOps Enthusiast|SQL Server& MONGODB</h3>
 
 <p align="center">
   <a href="https://github.com/abubakarshahid439">
@@ -9,10 +9,10 @@
 </p>
 
 <p align="center">
-  <a href="https://www.linkedin.com/in/your-linkedin-handle" target="_blank">
+  <a href="https://www.linkedin.com/in/abubakar-shahid-b7646a2b2?utm_source=share_via&utm_content=profile&utm_medium=member_ios" target="_blank">
     <img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" />
   </a>
-  <a href="mailto:your.email@example.com">
+  <a href="mailto:abubakarshahid00011@gmail.com">
     <img src="https://img.shields.io/badge/Email-D14836?style=for-the-badge&logo=gmail&logoColor=white" />
   </a>
   <a href="https://github.com/abubakarshahid439" target="_blank">
@@ -30,7 +30,7 @@
 - 🤖 Exploring **Machine Learning**, **Computer Vision**, and **Artificial Intelligence**
 - ☁️ Working with **Firebase** and **Supabase** for backend-as-a-service solutions
 - ⚙️ Interested in building real-time applications with **Socket.io** and secure systems with **JWT authentication**
-- 📫 Reach me at: **your.email@example.com**
+- 📫 Reach me at: **abubakarshahid00011@gmail.com**
 - ⚡ Fun fact: I enjoy turning classic games into code — check out my Hangman projects below!
 
 ---
