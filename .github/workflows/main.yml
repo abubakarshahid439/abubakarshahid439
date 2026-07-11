@@ -20,13 +20,35 @@ jobs:
       - name: Create profile folder
         run: mkdir -p profile
 
-      - name: Fetch GitHub Stats card
+      - name: Fetch GitHub Stats card (with retry + validation)
         run: |
-          curl -sSL "https://github-readme-stats.vercel.app/api?username=abubakarshahid439&show_icons=true&theme=tokyonight&hide_border=true" -o profile/stats.svg
+          for i in 1 2 3 4 5; do
+            curl -sSL "https://github-readme-stats.vercel.app/api?username=abubakarshahid439&show_icons=true&theme=tokyonight&hide_border=true" -o profile/stats_tmp.svg
+            if grep -q "<svg" profile/stats_tmp.svg; then
+              mv profile/stats_tmp.svg profile/stats.svg
+              echo "stats.svg updated successfully"
+              break
+            else
+              echo "Attempt $i failed, retrying in 15s..."
+              rm -f profile/stats_tmp.svg
+              sleep 15
+            fi
+          done
 
-      - name: Fetch Top Languages card
+      - name: Fetch Top Languages card (with retry + validation)
         run: |
-          curl -sSL "https://github-readme-stats.vercel.app/api/top-langs/?username=abubakarshahid439&layout=compact&theme=tokyonight&hide_border=true" -o profile/top-langs.svg
+          for i in 1 2 3 4 5; do
+            curl -sSL "https://github-readme-stats.vercel.app/api/top-langs/?username=abubakarshahid439&layout=compact&theme=tokyonight&hide_border=true" -o profile/top-langs_tmp.svg
+            if grep -q "<svg" profile/top-langs_tmp.svg; then
+              mv profile/top-langs_tmp.svg profile/top-langs.svg
+              echo "top-langs.svg updated successfully"
+              break
+            else
+              echo "Attempt $i failed, retrying in 15s..."
+              rm -f profile/top-langs_tmp.svg
+              sleep 15
+            fi
+          done
 
       - name: Generate Streak Stats card
         uses: DenverCoder1/github-readme-streak-stats@main
