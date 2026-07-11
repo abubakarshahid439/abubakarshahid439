@@ -1,0 +1,44 @@
+name: Update Profile Stats
+
+on:
+  schedule:
+    - cron: "0 3 * * *"
+  push:
+    paths:
+      - ".github/workflows/update-stats.yml"
+  workflow_dispatch:
+
+jobs:
+  update-stats:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Create profile folder
+        run: mkdir -p profile
+
+      - name: Fetch GitHub Stats card
+        run: |
+          curl -sSL "https://github-readme-stats.vercel.app/api?username=abubakarshahid439&show_icons=true&theme=tokyonight&hide_border=true" -o profile/stats.svg
+
+      - name: Fetch Top Languages card
+        run: |
+          curl -sSL "https://github-readme-stats.vercel.app/api/top-langs/?username=abubakarshahid439&layout=compact&theme=tokyonight&hide_border=true" -o profile/top-langs.svg
+
+      - name: Generate Streak Stats card
+        uses: DenverCoder1/github-readme-streak-stats@main
+        with:
+          options: user=abubakarshahid439&theme=tokyonight&hide_border=true
+          path: profile/streak.svg
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Commit updated cards
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add profile/stats.svg profile/top-langs.svg profile/streak.svg
+          git commit -m "Update profile stats" || echo "No changes to commit"
+          git push
